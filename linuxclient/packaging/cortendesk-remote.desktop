@@ -1,0 +1,17 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=CortenDesk Remote
+Name[ru]=CortenDesk Remote
+GenericName=Remote desktop client
+GenericName[ru]=Клиент удалённого рабочего стола
+Comment=Remote desktop control through a CortenDesk console
+Comment[ru]=Удалённое управление рабочими столами через консоль CortenDesk
+Exec=cortendesk-remote
+Icon=cortendesk-remote
+Terminal=false
+Categories=Network;RemoteAccess;GTK;
+Keywords=remote;desktop;rustdesk;cortendesk;vnc;
+Keywords[ru]=удалённый;рабочий;стол;доступ;
+StartupNotify=true
+StartupWMClass=cortendesk-remote

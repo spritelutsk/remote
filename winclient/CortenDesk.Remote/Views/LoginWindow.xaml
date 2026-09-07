@@ -1,0 +1,40 @@
+<Window x:Class="CortenDesk.Remote.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Вход — CortenDesk Remote"
+        Height="440" Width="420"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+
+  <Border Background="{StaticResource Card}" BorderBrush="{StaticResource Line}"
+          BorderThickness="1" CornerRadius="10" Margin="18">
+    <StackPanel Margin="26,24,26,24">
+
+      <TextBlock Text="CortenDesk Remote" Style="{StaticResource H1}"/>
+      <TextBlock Text="Удалённое управление рабочими столами"
+                 Style="{StaticResource Muted}" Margin="0,4,0,18"/>
+
+      <TextBlock Text="Сервер"/>
+      <TextBox x:Name="ServerBox" Margin="0,4,0,12"/>
+
+      <TextBlock Text="Пользователь"/>
+      <TextBox x:Name="UserBox" Margin="0,4,0,12"/>
+
+      <TextBlock Text="Пароль"/>
+      <PasswordBox x:Name="PassBox" Margin="0,4,0,12"/>
+
+      <CheckBox x:Name="RememberBox" Content="Запомнить вход на этом компьютере"
+                Foreground="{StaticResource Fg}" Margin="0,0,0,14"/>
+
+      <TextBlock x:Name="ErrorText" Foreground="{StaticResource Danger}"
+                 TextWrapping="Wrap" Visibility="Collapsed" Margin="0,0,0,12"/>
+
+      <Button x:Name="LoginButton" Content="Войти" Style="{StaticResource Primary}"
+              IsDefault="True" Click="OnLoginClick"/>
+
+      <TextBlock x:Name="StatusText" Style="{StaticResource Muted}"
+                 Margin="0,12,0,0" TextWrapping="Wrap"/>
+
+    </StackPanel>
+  </Border>
+</Window>

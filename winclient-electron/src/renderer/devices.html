@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; style-src 'self'; script-src 'self';">
+  <title>CortenDesk Remote</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div class="app">
+
+    <header>
+      <div class="left">
+        <h1>Устройства</h1>
+        <span class="muted" id="host"></span>
+      </div>
+      <div class="right">
+        <span class="muted" id="user"></span>
+        <button class="secondary" id="logout">Выйти</button>
+      </div>
+    </header>
+
+    <div class="filters">
+      <label for="search" style="margin:0;">Поиск</label>
+      <input type="text" id="search" autocomplete="off" spellcheck="false">
+
+      <label for="group" style="margin:0 0 0 8px;">Папка</label>
+      <select id="group"><option value="">Все папки</option></select>
+
+      <span class="check" style="margin-left:8px;">
+        <input type="checkbox" id="online-only">
+        <label for="online-only" style="margin:0;">Только в сети</label>
+      </span>
+
+      <button class="secondary" id="refresh" style="margin-left:8px;">Обновить</button>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="plain" style="width:34px;"></th>
+            <th data-sort="deviceName">Устройство</th>
+            <th data-sort="id">ID</th>
+            <th data-sort="os">ОС</th>
+            <th data-sort="localUser">Пользователь</th>
+            <th data-sort="owner">Владелец</th>
+            <th data-sort="group">Папка</th>
+            <th data-sort="note">Заметка</th>
+            <th class="plain" style="width:150px;"></th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <div class="empty" id="empty" hidden>Ничего не найдено</div>
+    </div>
+
+    <footer><span id="status"></span></footer>
+  </div>
+
+  <script src="devices.js"></script>
+</body>
+</html>

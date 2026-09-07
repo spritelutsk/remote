@@ -1,0 +1,29 @@
+# Секреты и данные портала. CLAUDE.md перечисляет их отдельно: ключ подписи
+# сессий и CSRF, секреты OIDC, приватный ключ подписи токенов и база с хэшами
+# паролей. Смена SECRET_KEY разлогинивает всех — в историю ему точно не надо.
+webportal/.secret
+webportal/.oidc_secret
+webportal/.rustdesk_key
+webportal/oidc_rsa_key.pem
+webportal/portal.db
+webportal/portal.db-journal
+webportal/portal.db-wal
+webportal/portal.db-shm
+
+# Ручные бэкапы: app.py.bak и снимки базы перед правками.
+*.bak
+*.bak-*
+
+# Окружения и результаты сборки (~440 МБ на три dist/).
+webportal/.venv/
+node_modules/
+dist/
+bin/
+obj/
+
+# Клоны апстрима для справки: у каждого свой .git, вместе 284 МБ.
+doc/
+
+__pycache__/
+*.py[cod]
+.DS_Store

@@ -1,0 +1,208 @@
+/* Светлая палитра — та же, что у веб-портала. */
+:root {
+  --bg: #f4f6fa;
+  --card: #ffffff;
+  --line: #dde2ea;
+  --fg: #1b1f2a;
+  --mut: #5c6779;
+  --acc: #2f5fe0;
+  --acc-hov: #1f47b8;
+  --ok: #159a63;
+  --off: #a6b0be;
+  --danger: #d63a4e;
+  --soft: #eef1f6;
+  --hover: #f2f5fb;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 13px/1.45 "Segoe UI", system-ui, sans-serif;
+  /* Приложение — не веб-страница: выделять текст интерфейса незачем. */
+  user-select: none;
+}
+
+h1 { font-size: 20px; font-weight: 600; margin: 0; }
+.muted { color: var(--mut); }
+.mono { font-family: Consolas, "Cascadia Mono", monospace; }
+
+label { display: block; margin-bottom: 4px; }
+
+input[type="text"], input[type="password"], select {
+  width: 100%;
+  padding: 7px 9px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--card);
+  color: var(--fg);
+  font: inherit;
+  outline: none;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, select:focus {
+  border-color: var(--acc);
+  box-shadow: 0 0 0 3px rgba(47, 95, 224, .15);
+}
+
+button {
+  font: inherit;
+  border: 0;
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+  background: var(--acc);
+  color: #fff;
+}
+
+button:hover { background: var(--acc-hov); }
+button:disabled { background: var(--off); cursor: default; }
+
+button.secondary {
+  background: var(--soft);
+  color: var(--fg);
+  border: 1px solid var(--line);
+}
+
+button.secondary:hover { background: var(--hover); }
+
+.error {
+  color: var(--danger);
+  margin: 0 0 12px;
+}
+
+/* --- окно входа --- */
+
+.login-card {
+  max-width: 372px;
+  margin: 24px auto;
+  padding: 26px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(20, 30, 50, .06);
+}
+
+.login-card .field { margin-bottom: 12px; }
+
+.login-card .check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+
+.login-card button[type="submit"] { width: 100%; }
+
+/* --- окно устройств --- */
+
+.app { display: flex; flex-direction: column; height: 100vh; }
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 16px;
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+}
+
+header .left { display: flex; align-items: baseline; gap: 14px; }
+header .right { display: flex; align-items: center; gap: 12px; }
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+}
+
+.filters input[type="text"] { width: 240px; }
+.filters select { width: 180px; }
+.filters .check { display: flex; align-items: center; gap: 6px; }
+
+.table-wrap {
+  flex: 1;
+  overflow: auto;
+  margin: 0 16px 12px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+table { width: 100%; border-collapse: collapse; }
+
+th {
+  position: sticky;
+  top: 0;
+  background: var(--soft);
+  color: var(--mut);
+  font-weight: 600;
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+th.plain { cursor: default; }
+
+td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+
+tbody tr:hover { background: var(--hover); }
+tbody tr.selected { background: #e6ecfb; }
+
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--off);
+}
+
+.dot.on { background: var(--ok); box-shadow: 0 0 0 3px rgba(21, 154, 99, .18); }
+
+td.actions { text-align: right; white-space: nowrap; }
+td.actions button { padding: 5px 10px; }
+
+.empty { padding: 28px; text-align: center; color: var(--mut); }
+
+footer {
+  padding: 7px 16px;
+  background: var(--card);
+  border-top: 1px solid var(--line);
+  color: var(--mut);
+}
+
+/* Контекстное меню строки — своё, потому что нативное меню Electron живёт
+   в главном процессе и ради трёх пунктов гонять IPC не нужно. */
+.menu {
+  position: fixed;
+  z-index: 10;
+  min-width: 190px;
+  padding: 4px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(20, 30, 50, .14);
+}
+
+.menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  color: var(--fg);
+  padding: 7px 10px;
+}
+
+.menu button:hover { background: var(--hover); }
+.menu hr { border: 0; border-top: 1px solid var(--line); margin: 4px 0; }

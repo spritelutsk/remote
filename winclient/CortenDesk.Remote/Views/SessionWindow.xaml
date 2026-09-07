@@ -1,0 +1,54 @@
+<Window x:Class="CortenDesk.Remote.Views.SessionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        Title="Сеанс — CortenDesk Remote"
+        Height="820" Width="1280"
+        WindowStartupLocation="CenterOwner">
+
+  <DockPanel>
+
+    <Border x:Name="Toolbar" DockPanel.Dock="Top" Background="{StaticResource Card}"
+            BorderBrush="{StaticResource Line}" BorderThickness="0,0,0,1" Padding="12,7">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+          <TextBlock x:Name="TitleText" FontWeight="SemiBold" VerticalAlignment="Center"/>
+          <TextBlock x:Name="StatusText" Style="{StaticResource Muted}"
+                     VerticalAlignment="Center" Margin="12,0,0,0"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Orientation="Horizontal">
+          <Button Content="Во весь экран (F11)" Style="{StaticResource Secondary}"
+                  Margin="0,0,8,0" Click="OnFullscreenClick"/>
+          <Button Content="Переподключиться" Style="{StaticResource Secondary}"
+                  Margin="0,0,8,0" Click="OnReconnectClick"/>
+          <Button Content="Открыть в браузере" Style="{StaticResource Secondary}"
+                  Click="OnOpenInBrowserClick"/>
+        </StackPanel>
+      </Grid>
+    </Border>
+
+    <Grid>
+      <wv2:WebView2 x:Name="Web"/>
+
+      <!-- Заглушка на время инициализации и на случай отсутствия WebView2. -->
+      <Border x:Name="Overlay" Background="{StaticResource Bg}">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="520">
+          <TextBlock x:Name="OverlayTitle" Style="{StaticResource H1}"
+                     HorizontalAlignment="Center" Text="Открываем сеанс…"/>
+          <TextBlock x:Name="OverlayText" Style="{StaticResource Muted}" TextWrapping="Wrap"
+                     HorizontalAlignment="Center" TextAlignment="Center" Margin="0,10,0,0"/>
+          <Button x:Name="OverlayButton" Content="Скачать WebView2 Runtime"
+                  Style="{StaticResource Primary}" HorizontalAlignment="Center"
+                  Margin="0,18,0,0" Visibility="Collapsed" Click="OnDownloadRuntimeClick"/>
+        </StackPanel>
+      </Border>
+    </Grid>
+
+  </DockPanel>
+</Window>
